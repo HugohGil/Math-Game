@@ -6,13 +6,65 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/btCredits"
+        android:layout_width="190dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/credits"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btLanguage" />
+
+    <Button
+        android:id="@+id/btLanguage"
+        android:layout_width="190dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/change_language"
+        app:layout_constraintBottom_toTopOf="@+id/btCredits"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btTop5" />
+
+    <Button
+        android:id="@+id/btTop5"
+        android:layout_width="190dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/top_5"
+        app:layout_constraintBottom_toTopOf="@+id/btLanguage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btStart" />
+
     <TextView
+        android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="@string/math_game"
+        android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.11" />
+
+    <Button
+        android:id="@+id/btStart"
+        android:layout_width="190dp"
+        android:layout_height="61dp"
+        android:text="@string/start_game"
+        app:layout_constraintBottom_toTopOf="@+id/btTop5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+        app:layout_constraintVertical_bias="0.57"
+        app:layout_constraintVertical_chainStyle="packed" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

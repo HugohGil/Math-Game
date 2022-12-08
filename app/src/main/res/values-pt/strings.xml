@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AM_TP</string>
+    <string name="change_language">Alterar Linguagem</string>
+    <string name="top_5">Top 5</string>
+    <string name="math_game">Jogo de Matemática</string>
+    <string name="start_game">Iniciar Jogo</string>
+    <string name="credits">Créditos</string>
+    <string name="msg_choose_language">Selecione a linguagem</string>
+    <string name="msg_error_language">Essa linguagem já está a ser usada</string>
+    <string name="msg_cancel">Cancelar</string>
+</resources>
