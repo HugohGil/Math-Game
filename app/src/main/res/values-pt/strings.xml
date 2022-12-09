@@ -9,4 +9,7 @@
     <string name="msg_choose_language">Selecione a linguagem</string>
     <string name="msg_error_language">Essa linguagem já está a ser usada</string>
     <string name="msg_cancel">Cancelar</string>
+    <string name="gameModeTitle">Modo de jogo</string>
+    <string name="gameModeBtnSingle">Um jogador</string>
+    <string name="gameModeBtnMulti">Multi-jogador</string>
 </resources>
