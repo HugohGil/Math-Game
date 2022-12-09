@@ -28,8 +28,18 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.btnTop5.setOnClickListener {
+            val intent = Intent(this, Top5Activity::class.java)
+            startActivity(intent)
+        }
+
         binding.btnLanguage.setOnClickListener {
             changeLanguage()
+        }
+
+        binding.btnCredits.setOnClickListener {
+            val intent = Intent(this, CreditsActivity::class.java)
+            startActivity(intent)
         }
     }
 
