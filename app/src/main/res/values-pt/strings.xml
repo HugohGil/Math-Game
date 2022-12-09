@@ -16,4 +16,13 @@
     <string name="default_number">0</string>
     <string name="default_timer">00:00</string>
     <string name="difficulty">Dificuldade</string>
+    <string name="top_5_title">Top 5 Jogadores</string>
+    <string name="top_5_default_names">Nome do Jogador</string>
+    <string name="credit_title">Créditos</string>
+    <string name="hugo_info">Hugo Gil</string>
+    <string name="renato_info">Renato Santos</string>
+    <string name="sergio_info">Sérgio Alves</string>
+    <string name="year">2022/2023</string>
+    <string name="subject">Arquiteturas Móveis</string>
+    <string name="isec">ISEC</string>
 </resources>
