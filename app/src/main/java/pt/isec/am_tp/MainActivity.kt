@@ -1,9 +1,6 @@
 package pt.isec.am_tp
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -14,18 +11,24 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var appLanguage = "en"
-    private var currentLang: String? = null
+    private var currentLanguage: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        appLanguage = intent.getStringExtra(currentLang).toString()
+        appLanguage = intent.getStringExtra(currentLanguage).toString()
         if (appLanguage == "null") {                              // first time
             setDefaultLanguage()
         }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.btLanguage.setOnClickListener {
+
+        binding.btnStart.setOnClickListener {
+            val intent = Intent(this, GameModeActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnLanguage.setOnClickListener {
             changeLanguage()
         }
     }
@@ -67,7 +70,7 @@ class MainActivity : AppCompatActivity() {
                 this,
                 MainActivity::class.java
             )
-            intent.putExtra(currentLang, l)
+            intent.putExtra(currentLanguage, l)
             startActivity(intent)
         } else
             Toast.makeText(this, R.string.msg_error_language, Toast.LENGTH_LONG).show()

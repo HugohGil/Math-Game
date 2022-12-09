@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btTop5"
+        android:id="@+id/btnTop5"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
@@ -17,14 +17,14 @@
         android:backgroundTint="@color/primary"
         android:text="@string/top_5"
         android:textColor="@color/text_color"
-        app:layout_constraintBottom_toTopOf="@+id/btCredits"
+        app:layout_constraintBottom_toTopOf="@+id/btnCredits"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btStart"
+        app:layout_constraintStart_toEndOf="@+id/btnStart"
         app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
 
     <Button
-        android:id="@+id/btStart"
+        android:id="@+id/btnStart"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="30dp"
@@ -33,14 +33,14 @@
         android:backgroundTint="@color/primary"
         android:text="@string/start_game"
         android:textColor="@color/text_color"
-        app:layout_constraintBottom_toTopOf="@+id/btLanguage"
-        app:layout_constraintEnd_toStartOf="@+id/btTop5"
+        app:layout_constraintBottom_toTopOf="@+id/btnLanguage"
+        app:layout_constraintEnd_toStartOf="@+id/btnTop5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
 
     <Button
-        android:id="@+id/btLanguage"
+        android:id="@+id/btnLanguage"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="15dp"
@@ -50,13 +50,13 @@
         android:text="@string/change_language"
         android:textColor="@color/text_color"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btCredits"
+        app:layout_constraintEnd_toStartOf="@+id/btnCredits"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
-        app:layout_constraintTop_toBottomOf="@+id/btStart" />
+        app:layout_constraintTop_toBottomOf="@+id/btnStart" />
 
     <Button
-        android:id="@+id/btCredits"
+        android:id="@+id/btnCredits"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
@@ -68,8 +68,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btLanguage"
-        app:layout_constraintTop_toBottomOf="@+id/btTop5" />
+        app:layout_constraintStart_toEndOf="@+id/btnLanguage"
+        app:layout_constraintTop_toBottomOf="@+id/btnTop5" />
 
     <TextView
         android:id="@+id/txtTitle"
