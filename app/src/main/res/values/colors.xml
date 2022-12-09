@@ -10,6 +10,6 @@
     <color name="background_color">#1e212b</color> <!--Raisin Black-->
     <color name="primary">#414B50</color>  <!--Light Slate Gray-->
     <color name="text_color">#C5C5C5</color> <!--Light Cyan-->
-    <color name="a">#b9314f</color> <!--Bright Maroon -->
-    <color name="b">#a26769</color> <!--Copper Rose-->
+    <color name="node_main">#b9314f</color> <!--Bright Maroon -->
+    <color name="node_secondary">#a26769</color> <!--Copper Rose-->
 </resources>
