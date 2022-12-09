@@ -8,8 +8,11 @@
     <string name="msg_choose_language">Select the language</string>
     <string name="msg_error_language">That language is already being used</string>
     <string name="msg_cancel">Cancel</string>
-    <string name="gameModeTitle">Game mode</string>
-    <string name="gameModeBtnSingle">Singleplayer</string>
-    <string name="gameModeBtnMulti">Multiplayer</string>
-
+    <string name="game_mode_title">Game mode</string>
+    <string name="game_mode_btn_single">Singleplayer</string>
+    <string name="game_mode_btn_multi">Multiplayer</string>
+    <string name="your_points">Points</string>
+    <string name="default_number">0</string>
+    <string name="default_timer">00:00</string>
+    <string name="difficulty">Difficulty</string>
 </resources>
