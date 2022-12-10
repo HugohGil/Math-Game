@@ -1,17 +1,21 @@
 package pt.isec.am_tp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.annotation.Nullable
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import pt.isec.am_tp.databinding.ActivityMainBinding
 import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var appLanguage = "en"
     private var currentLanguage: String? = null
+    private var requestCode = 0
+    private var SECOND_ACTIVITY_REQUEST_CODE = 12
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,6 +32,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.btnProfile?.setOnClickListener {
+            val intent = Intent(this, ConfigImageActivity::class.java)
+            startActivityForResult(intent,requestCode);
+        }
         binding.btnTop5.setOnClickListener {
             val intent = Intent(this, Top5Activity::class.java)
             startActivity(intent)
@@ -42,7 +50,17 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent?) {
+        if (requestCode == SECOND_ACTIVITY_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
 
+            } else {
+                // handle cancellation
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data)
+        }
+    }
     private fun setDefaultLanguage() {
         if (Locale.getDefault().language == "pt")
             setLocale("pt")

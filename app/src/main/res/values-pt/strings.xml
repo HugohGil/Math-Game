@@ -14,6 +14,8 @@
     <string name="game_mode_title">Modo de jogo</string>
     <string name="game_mode_btn_single">Um jogador</string>
     <string name="game_mode_btn_multi">Multi-jogador</string>
+    <string name="choose_image">Escolha uma foto</string>
+    <string name="take_photo">Tire uma foto</string>
     <string name="your_points">Pontuação</string>
     <string name="default_number">0</string>
     <string name="default_timer">00:00</string>

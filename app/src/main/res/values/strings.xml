@@ -13,6 +13,8 @@
     <string name="game_mode_title">Game mode</string>
     <string name="game_mode_btn_single">Singleplayer</string>
     <string name="game_mode_btn_multi">Multiplayer</string>
+    <string name="choose_image">Choose image</string>
+    <string name="take_photo">Take photo</string>
     <string name="your_points">Points</string>
     <string name="default_number">0</string>
     <string name="default_timer">00:00</string>
