@@ -63,7 +63,16 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent?) {
         if (requestCode == SECOND_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
-
+                if (data != null) {
+                    val bundle = data.extras
+                    var path = bundle?.getString("String");
+                    println("-------------------------------------------------" + path)
+                    binding.btnProfile?.let {
+                        if (path != null) {
+                            getPic(it,path)
+                        }
+                    }
+                }
             } else {
                 // handle cancellation
             }
