@@ -3,6 +3,8 @@
     <string name="app_name">AM_TP</string>
     <string name="change_language">Alterar Linguagem</string>
     <string name="top_5">Top 5</string>
+    <string name="profile">Perfil</string>
+    <string name="change_profile_picture">Mudar foto de perfil</string>
     <string name="math_game">Jogo de Matemática</string>
     <string name="start_game">Iniciar Jogo</string>
     <string name="credits">Créditos</string>
