@@ -1,9 +1,8 @@
 package pt.isec.am_tp
 
-import android.content.ContentValues.TAG
+
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.appcompat.app.AlertDialog
