@@ -35,16 +35,11 @@ class MainActivity : AppCompatActivity() {
         binding.btnTop5.setOnClickListener {
             val db = Firebase.firestore                     //TODO this will be moved to when player completes game
             val score = hashMapOf(
-            "points" to 30,
-            "time" to 30
+            "points" to 40,
+            "time" to 20
             )
-            db.collection("Score")
-                .add(score)
-                .addOnSuccessListener { documentReference ->
-                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-            }.addOnFailureListener { e ->
-                    Log.w(TAG, "Error adding document", e)
-                }
+            db.collection("Score").add(score)
+
             val intent = Intent(this, Top5Activity::class.java)
             startActivity(intent)
         }
