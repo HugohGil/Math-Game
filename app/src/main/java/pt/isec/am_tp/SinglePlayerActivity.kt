@@ -2,6 +2,9 @@ package pt.isec.am_tp
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
+import android.view.GestureDetector
+import android.view.MotionEvent
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +14,7 @@ import kotlin.getValue
 import kotlin.random.Random
 
 
-class SinglePlayerActivity : AppCompatActivity() {
+class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListener {
     val singlePlayerViewModel : SinglePlayerViewModel by viewModels()
     private lateinit var binding: ActivitySingleplayerBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,6 +69,44 @@ class SinglePlayerActivity : AppCompatActivity() {
                     .text = "bingbong"
             }
         }.start()
+    }
+
+
+    //Gesture Detector
+    private val gestureDetector : GestureDetector by lazy {
+        GestureDetector(this, this)
+    }
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+
+
+        return super.onTouchEvent(event)
+    }
+
+    override fun onDown(p0: MotionEvent?): Boolean {
+        Log.i("SWIPE", "onDown: ")
+
+        return true
+    }
+
+    override fun onShowPress(p0: MotionEvent?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onSingleTapUp(p0: MotionEvent?): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun onScroll(p0: MotionEvent?, p1: MotionEvent?, p2: Float, p3: Float): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLongPress(p0: MotionEvent?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onFling(p0: MotionEvent?, p1: MotionEvent?, p2: Float, p3: Float): Boolean {
+        TODO("Not yet implemented")
     }
 
 }
