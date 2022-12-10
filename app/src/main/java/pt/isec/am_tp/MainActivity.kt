@@ -1,10 +1,14 @@
 package pt.isec.am_tp
 
+import android.content.ContentValues.TAG
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import pt.isec.am_tp.databinding.ActivityMainBinding
 import java.util.*
 
@@ -29,6 +33,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnTop5.setOnClickListener {
+            val db = Firebase.firestore                     //TODO this will be moved to when player completes game
+            val score = Score(30, 30)
+            db.collection("Score")
+                .add(score)
+                .addOnSuccessListener { documentReference ->
+                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+            }.addOnFailureListener { e ->
+                    Log.w(TAG, "Error adding document", e)
+                }
             val intent = Intent(this, Top5Activity::class.java)
             startActivity(intent)
         }
