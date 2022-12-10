@@ -2,6 +2,8 @@
     <string name="app_name">AM_TP</string>
     <string name="change_language">Change Language</string>
     <string name="top_5">Top 5</string>
+    <string name="profile">Profile</string>
+    <string name="change_profile_picture">Change profile picture</string>
     <string name="math_game">Math Game</string>
     <string name="start_game">Start Game</string>
     <string name="credits">Credits</string>
