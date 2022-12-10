@@ -1,11 +1,15 @@
 package pt.isec.am_tp
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import pt.isec.am_tp.databinding.ActivityMainBinding
 import java.util.*
 
@@ -37,6 +41,13 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent,requestCode);
         }
         binding.btnTop5.setOnClickListener {
+            val db = Firebase.firestore                     //TODO this will be moved to when player completes game
+            val score = hashMapOf(
+            "points" to 40,
+            "time" to 20
+            )
+            db.collection("Score").add(score)
+
             val intent = Intent(this, Top5Activity::class.java)
             startActivity(intent)
         }

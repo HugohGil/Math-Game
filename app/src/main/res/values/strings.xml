@@ -10,6 +10,8 @@
     <string name="msg_choose_language">Select the language</string>
     <string name="msg_error_language">That language is already being used</string>
     <string name="msg_cancel">Cancel</string>
+    <string name="msg_score">Score:</string>
+    <string name="msg_time">Time:</string>
     <string name="game_mode_title">Game mode</string>
     <string name="game_mode_btn_single">Singleplayer</string>
     <string name="game_mode_btn_multi">Multiplayer</string>
@@ -19,8 +21,8 @@
     <string name="default_number">0</string>
     <string name="default_timer">00:00</string>
     <string name="difficulty">Difficulty</string>
-    <string name="top_5_title">Top 5 Players</string>
-    <string name="top_5_default_names">Player Name</string>
+    <string name="top_5_title">Top 5 Scores</string>
+    <string name="top_5_default_names" />
     <string name="credit_title">Credits</string>
     <string name="hugo_info">Hugo Gil</string>
     <string name="renato_info">Renato Santos</string>

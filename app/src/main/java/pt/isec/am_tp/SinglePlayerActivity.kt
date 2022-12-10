@@ -128,7 +128,9 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
                 else{
                     Toast.makeText(this, "Left swipe", Toast.LENGTH_LONG).show()
                 }
-                checkButton()
+                var button : Button? = checkButton()
+                if(button != null){
+                }
             }
             else if(abs(distanceY) > MIN_DISTANCE){
                 if(y2 > y1){
@@ -143,7 +145,7 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         return super.onTouchEvent(event)
     }
 
-    private fun checkButton() {
+    private fun checkButton(): Button? {
         for (b in buttons) {
             width = b.width.toFloat()
             height = b.height.toFloat()
@@ -155,8 +157,10 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
             val y2Button:Float = y1Button + height
             if(x1 > x1Button && x1 < x2Button && y1 > y1Button && y1 < y2Button){
                 System.out.println(b.text)
+                return b
             }
         }
+        return null
     }
 
     private fun getPointOfView(view: View): Point {
