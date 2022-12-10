@@ -34,7 +34,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnTop5.setOnClickListener {
             val db = Firebase.firestore                     //TODO this will be moved to when player completes game
-            val score = Score(30, 30)
+            val score = hashMapOf(
+            "points" to 30,
+            "time" to 30
+            )
             db.collection("Score")
                 .add(score)
                 .addOnSuccessListener { documentReference ->
