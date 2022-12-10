@@ -5,6 +5,7 @@ import android.os.CountDownTimer
 import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
+import android.widget.Button
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -42,18 +43,16 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         for(i in 0..11){
             val randomIndexAr = Random.nextInt(singlePlayerViewModel.operations.size)
             val idAr = idsAr.get(i)
-            findViewById<TextView>(idAr)
+            findViewById<Button>(idAr)
                 .text = "${singlePlayerViewModel.operations.get(randomIndexAr)}"
         }
 
         for(j in 0..8){
             val randomNum = Random.nextInt(1,singlePlayerViewModel.maxNumber)
             val idNum = idsNum.get(j)
-            findViewById<TextView>(idNum)
+            findViewById<Button>(idNum)
                 .text = "${randomNum}"
         }
-
-
     }
 
     private fun startTimer() {
@@ -78,35 +77,37 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-
-
+        if (gestureDetector.onTouchEvent(event!!))
+            return true
         return super.onTouchEvent(event)
     }
 
     override fun onDown(p0: MotionEvent?): Boolean {
-        Log.i("SWIPE", "onDown: ")
+        Log.i("GESTURE", "onDown: ${p0?.x} / ${p0?.y}")
 
+        return true
+    }
+    override fun onScroll(p0: MotionEvent?, p1: MotionEvent?, p2: Float, p3: Float): Boolean {
+        Log.i("GESTURE", "onScroll: ${p1?.x} / ${p1?.y}")
         return true
     }
 
     override fun onShowPress(p0: MotionEvent?) {
-        TODO("Not yet implemented")
+        Log.i("GESTURE", "onShowPress: ")
     }
 
     override fun onSingleTapUp(p0: MotionEvent?): Boolean {
-        TODO("Not yet implemented")
-    }
-
-    override fun onScroll(p0: MotionEvent?, p1: MotionEvent?, p2: Float, p3: Float): Boolean {
-        TODO("Not yet implemented")
+        Log.i("GESTURE", "onSingleTapUp: ")
+        return true
     }
 
     override fun onLongPress(p0: MotionEvent?) {
-        TODO("Not yet implemented")
+        Log.i("GESTURE", "onLongPress: ")
     }
 
     override fun onFling(p0: MotionEvent?, p1: MotionEvent?, p2: Float, p3: Float): Boolean {
-        TODO("Not yet implemented")
+        Log.i("GESTURE", "onFling: ")
+        return true
     }
 
 }

@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         appLanguage = intent.getStringExtra(currentLanguage).toString()
-        if (appLanguage == "null") {                              // first time
+        if (appLanguage == "null") {                            // first time
             setDefaultLanguage()
         }
 
