@@ -66,14 +66,20 @@
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/btnStart" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/btnProfile"
-        android:layout_width="40dp"
+        android:layout_width="48dp"
         android:layout_height="65dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="23dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toTopOf="@+id/btnStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_launcher_background" />
-
     <TextView
         android:id="@+id/txtTitle"
         android:layout_width="wrap_content"

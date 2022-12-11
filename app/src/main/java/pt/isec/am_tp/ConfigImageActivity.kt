@@ -1,24 +1,44 @@
 package pt.isec.am_tp
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import pt.isec.am_tp.databinding.ActivityProfileBinding
-import java.io.Serializable
 
 
 class ConfigImageActivity : AppCompatActivity(){
+    private var mode = GALLERY
+    private var imagePath : String? = null
+
+    private var permissionsGranted = false
+        set(value) {
+            field = value
+            binding.btnChange.isEnabled = value
+        }
+
     private lateinit var binding: ActivityProfileBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setResult(RESULT_OK)
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         mode = intent.getIntExtra(MODE_KEY, GALLERY)
+        val sharedPreferences: SharedPreferences = getSharedPreferences("profilePicturePathConfig", MODE_PRIVATE)
+        imagePath = sharedPreferences.getString("path","")
+        val bMap= BitmapFactory.decodeFile(imagePath)
+        binding.frPreview.background = BitmapDrawable(resources,bMap)
+
+
         when (mode) {
             GALLERY -> binding.btnChange.apply {
                 text = getString(R.string.choose_image)
@@ -31,24 +51,22 @@ class ConfigImageActivity : AppCompatActivity(){
         verifyPermissions()
         updatePreview()
     }
-    private var mode = GALLERY
-    private var imagePath : String? = null
-    private var permissionsGranted = false
-        set(value) {
-            field = value
-            binding.btnChange.isEnabled = value
-        }
 
     companion object {
-        private const val ACTIVITY_REQUEST_CODE_GALLERY = 1
+
         private const val PERMISSIONS_REQUEST_CODE = 1
         private const val GALLERY = 1
         private const val MODE_KEY = "mode"
+        fun getGalleryIntent(context : Context) : Intent {
+            val intent = Intent(context,ConfigImageActivity::class.java)
+            intent.putExtra(MODE_KEY, GALLERY)
+            return intent
+        }
     }
     fun updatePreview() {
         if (imagePath != null) {
             setPic(binding.frPreview, imagePath!!)
-            //returnResult(imagePath);
+
         }
         else
             binding.frPreview.background = ResourcesCompat.getDrawable(resources,
@@ -57,6 +75,7 @@ class ConfigImageActivity : AppCompatActivity(){
     }
     fun chooseImage() {
         startActivityForContentResult.launch("image/*")
+
 
     }
     override fun onRequestPermissionsResult(
@@ -87,28 +106,20 @@ class ConfigImageActivity : AppCompatActivity(){
     ) { isGranted ->
         permissionsGranted = isGranted
     }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, info: Intent?) {
-        if (requestCode == ACTIVITY_REQUEST_CODE_GALLERY && resultCode == RESULT_OK && info != null) {
-            info.data?.let { uri ->
-                imagePath = createFileFromUri(this,uri)
-                updatePreview()
-            }
-            return
-        }
-        super.onActivityResult(requestCode, resultCode, info)
-
-    }
     private var startActivityForContentResult = registerForActivityResult(ActivityResultContracts.GetContent())
     { uri ->
 
         imagePath = uri?.let { createFileFromUri(this, it) }
-
+        Log.i("IMAGEPATH", imagePath.toString())
+        returnResult(imagePath);
         updatePreview()
     }
     private fun returnResult(result: String?) {
-        val returnIntent = Intent()
-        returnIntent.putExtra(result, result as Serializable)
-        setResult(RESULT_OK, returnIntent)
-        finish()
+        var sharedPreferences: SharedPreferences = getSharedPreferences("profilePicturePathConfig", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("path",imagePath)
+        editor.apply()
+        Log.i("RESULTIMAGE",result.toString())
+
     }
 }

@@ -2,11 +2,14 @@ package pt.isec.am_tp
 
 
 import android.content.Intent
+import android.content.SharedPreferences
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
-import androidx.annotation.Nullable
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import pt.isec.am_tp.databinding.ActivityMenuBinding
@@ -17,24 +20,35 @@ class MenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMenuBinding
     private var appLanguage = "en"
     private var currentLanguage: String? = null
-    private var requestCode = 0
-    private var SECOND_ACTIVITY_REQUEST_CODE = 12
+    private var profilePicturePath: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         appLanguage = intent.getStringExtra(currentLanguage).toString()
 
+        val sharedPreferences: SharedPreferences = getSharedPreferences("profilePicturePathConfig", MODE_PRIVATE)
+        profilePicturePath = sharedPreferences.getString("path","")
+
+        Log.i("PATHMENU",profilePicturePath.toString())
 
         binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val bMap = BitmapFactory.decodeFile(profilePicturePath)
+        binding.btnProfile!!.setImageBitmap(bMap)
+        //setPic(binding.btnProfile!!, profilePicturePath!!)
 
         binding.btnStart.setOnClickListener {
             val intent = Intent(this, GameModeActivity::class.java)
             startActivity(intent)
         }
 
-        binding.btnProfile?.setOnClickListener {
-            val intent = Intent(this, ConfigImageActivity::class.java)
-            startActivityForResult(intent,requestCode);
+        binding.btnProfile!!.setOnClickListener {
+            val intent = ConfigImageActivity.getGalleryIntent(this)
+
+            val editor = sharedPreferences.edit()
+            editor.putString("path",profilePicturePath)
+            editor.apply()
+            startActivity(intent)
         }
         binding.btnTop5.setOnClickListener {
             val db = Firebase.firestore                     //TODO this will be moved to when player completes game
@@ -55,26 +69,6 @@ class MenuActivity : AppCompatActivity() {
         binding.btnCredits.setOnClickListener {
             val intent = Intent(this, CreditsActivity::class.java)
             startActivity(intent)
-        }
-    }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent?) {
-        if (requestCode == SECOND_ACTIVITY_REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-                if (data != null) {
-                    val bundle = data.extras
-                    var path = bundle?.getString("String");
-                    println("-------------------------------------------------" + path)
-                    binding.btnProfile?.let {
-                        if (path != null) {
-                            getPic(it,path)
-                        }
-                    }
-                }
-            } else {
-                // handle cancellation
-            }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data)
         }
     }
 
@@ -113,4 +107,5 @@ class MenuActivity : AppCompatActivity() {
         } else
             Toast.makeText(this, R.string.msg_error_language, Toast.LENGTH_LONG).show()
     }
+
 }
