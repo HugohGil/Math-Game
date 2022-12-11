@@ -1,5 +1,7 @@
 package pt.isec.am_tp
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Point
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -19,6 +21,19 @@ import kotlin.random.Random
 class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListener {
     companion object{
         const val MIN_DISTANCE = 100
+        private const val SCORE_KEY = "score"
+        private const val LEVEL_KEY = "level"
+
+        fun getIntent(
+            context: Context,
+            score: Int,
+            level: Int,
+        ): Intent {
+            val intent = Intent(context, MenuActivity::class.java)
+            intent.putExtra(SCORE_KEY, score)
+            intent.putExtra(LEVEL_KEY, level)
+            return intent
+        }
     }
 
     val singlePlayerViewModel : SinglePlayerViewModel by viewModels()
@@ -43,6 +58,7 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         findViewById<TextView>(R.id.txtTimer)
             .text = "${singlePlayerViewModel.timer}"
 
+
         singlePlayerViewModel.operations.add("x")
         singlePlayerViewModel.operations.add("÷")
         singlePlayerViewModel.operations.add("+")
@@ -50,7 +66,6 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
 
         generateBoard()
         startTimer()
-
     }
 
     private fun generateBoard() {
