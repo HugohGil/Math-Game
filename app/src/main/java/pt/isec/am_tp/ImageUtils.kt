@@ -7,6 +7,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.util.Log
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import java.io.File
 import java.io.FileOutputStream
@@ -21,7 +22,6 @@ fun setPic(view: View, path: String) {
         }
     }
 }
-
 fun getPic(view: View, path: String) : Bitmap? {
     val targetW = view.width
     val targetH = view.height
