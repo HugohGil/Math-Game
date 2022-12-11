@@ -29,12 +29,12 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
     private lateinit var rowEquationsSolution: FloatArray
     private lateinit var colEquationsSolution: FloatArray
 
-    var x1:Float = 0.0f
-    var y1:Float = 0.0f
-    var x2:Float = 0.0f
-    var y2:Float = 0.0f
-    var height:Float = 0.0f
-    var width:Float = 0.0f
+    private var x1:Float = 0.0f
+    private var y1:Float = 0.0f
+    private var x2:Float = 0.0f
+    private var y2:Float = 0.0f
+    private var height:Float = 0.0f
+    private var width:Float = 0.0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,9 +43,10 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         findViewById<TextView>(R.id.txtTimer)
             .text = "${singlePlayerViewModel.timer}"
 
-
         singlePlayerViewModel.operations.add("x")
         singlePlayerViewModel.operations.add("÷")
+        singlePlayerViewModel.operations.add("+")
+        singlePlayerViewModel.operations.add("-")
 
         generateBoard()
         startTimer()
@@ -53,6 +54,7 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
     }
 
     private fun generateBoard() {
+        Log.i("GENERATE BOARD", "GENERATING BOARD")
         /*
         Generates game board
          */
@@ -102,7 +104,6 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
             }
             count += 2
         }
-
         rowEquationsSolution = FloatArray(3)
         for(i in rowEquations.indices){
             rowEquationsSolution[i] = solveEquation(rowEquations[i])
@@ -111,7 +112,7 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         for(i in colEquations.indices){
             colEquationsSolution[i] = solveEquation(colEquations[i])
         }
-
+        Log.i("GENERATE BOARD", "BOARD GENERATED")
     }
 
     private fun solveEquation(equation : Array<Button?>) : Float{
@@ -132,24 +133,6 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
                     break
                 if (i % 2 == 1) {
                     while (parts[i] == "x" || parts[i] == "÷") {
-                        val a = parts.get(i - 1)
-                        val b = parts.get(i)
-                        val c = parts.get(i + 1)
-                        parts.remove(a)
-                        parts.remove(b)
-                        parts.remove(c)
-                        val d = solveArithmetic(a.toFloat(), b, c.toFloat()).toString()
-                        parts.add(i - 1, d)
-                        if (parts.size == 1)
-                            break
-                    }
-                }
-            }
-            for (i in 0 until parts.size) { //calculates first and/or second operation if they are sum or subtraction
-                if (!parts.contains("+") && !parts.contains("-"))
-                    break
-                if (i % 2 == 1) {
-                    while (parts[i] == "x" || parts[i] == "÷") {
                         val a = parts[i - 1]
                         val b = parts[i]
                         val c = parts[i + 1]
@@ -158,7 +141,25 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
                         parts.remove(c)
                         val d = solveArithmetic(a.toFloat(), b, c.toFloat()).toString()
                         parts.add(i - 1, d)
-                        if (parts.size == 1)
+                        if (parts.size == 1 || (!parts.contains("x") && !parts.contains("÷")))
+                            break
+                    }
+                }
+            }
+            for (i in 0 until parts.size) { //calculates first and/or second operation if they are sum or subtraction
+                if (!parts.contains("+") && !parts.contains("-"))
+                    break
+                if (i % 2 == 1) {
+                    while (parts[i] == "+" || parts[i] == "-") {
+                        val a = parts[i - 1]
+                        val b = parts[i]
+                        val c = parts[i + 1]
+                        parts.remove(a)
+                        parts.remove(b)
+                        parts.remove(c)
+                        val d = solveArithmetic(a.toFloat(), b, c.toFloat()).toString()
+                        parts.add(i - 1, d)
+                        if (parts.size == 1 || (!parts.contains("+") && !parts.contains("-")))
                             break
                     }
                 }
@@ -251,7 +252,8 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         solutionArray.sort()
         solutionArray.reverse()
         for(i in solutionArray)
-            Log.i("SOLUTION", "$i")
+            Log.i("SOLUTION LIST", "$i")
+        Log.i("SOLUTION PICKED", "$result")
         return when (result) {
             solutionArray[0] -> 2
             solutionArray[1] -> 1
