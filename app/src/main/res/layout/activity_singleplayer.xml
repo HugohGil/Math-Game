@@ -72,7 +72,6 @@
         app:cornerRadius="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnAr10"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAr7" />
 
@@ -115,7 +114,8 @@
         app:layout_constraintEnd_toStartOf="@+id/btnNum1"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnNum0"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:layout_constraintVertical_chainStyle="spread" />
 
     <Button
         android:id="@+id/btnSpace11"
@@ -384,7 +384,8 @@
         app:layout_constraintEnd_toStartOf="@+id/btnAr1"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnAr0"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:layout_constraintVertical_chainStyle="spread" />
 
     <Button
         android:id="@+id/btnAr1"
@@ -427,7 +428,7 @@
         android:text="@string/your_points"
         android:textColor="@color/text_color"
         android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtPoints"
+        app:layout_constraintBottom_toTopOf="@+id/txtScore"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -435,10 +436,10 @@
         app:layout_constraintVertical_bias="0.06999999" />
 
     <TextView
-        android:id="@+id/txtPoints"
+        android:id="@+id/txtScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         android:text="@string/default_number"
         android:textColor="@color/text_color"
         android:textSize="50sp"
@@ -452,35 +453,36 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="5dp"
         android:text="@string/difficulty"
         android:textColor="@color/text_color"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/txtTimer"
-        app:layout_constraintEnd_toStartOf="@+id/txtDifficulty"
+        app:layout_constraintEnd_toStartOf="@+id/textView5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="@+id/txtPoints"
-        app:layout_constraintTop_toBottomOf="@+id/txtPoints" />
+        app:layout_constraintStart_toStartOf="@+id/txtScore"
+        app:layout_constraintTop_toBottomOf="@+id/txtScore" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/expressions_left"
         android:textColor="@color/text_color"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnAr0"
-        app:layout_constraintEnd_toStartOf="@+id/txtExpressionsLeft"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/textView12"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/txtTimer"
         app:layout_constraintTop_toBottomOf="@+id/txtTimer" />
 
     <TextView
-        android:id="@+id/txtDifficulty"
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -488,15 +490,16 @@
         android:textAlignment="textStart"
         android:textColor="@color/text_color"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/txtPoints"
+        app:layout_constraintEnd_toEndOf="@+id/txtScore"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <TextView
-        android:id="@+id/txtExpressionsLeft"
+        android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:text="@string/default_number"
         android:textAlignment="textStart"
         android:textColor="@color/text_color"
@@ -511,12 +514,11 @@
         android:id="@+id/txtTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:text="@string/default_timer"
         android:textColor="@color/text_color"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="@+id/txtDifficulty"
+        app:layout_constraintEnd_toEndOf="@+id/textView5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
