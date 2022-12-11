@@ -422,7 +422,7 @@
         android:text="@string/your_points"
         android:textColor="@color/text_color"
         android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtScore"
+        app:layout_constraintBottom_toTopOf="@+id/txtPoints"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -430,7 +430,7 @@
         app:layout_constraintVertical_bias="0.251" />
 
     <TextView
-        android:id="@+id/txtScore"
+        android:id="@+id/txtPoints"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -453,14 +453,14 @@
         android:textColor="@color/text_color"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView5"
+        app:layout_constraintEnd_toStartOf="@+id/txtDifficulty"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="@+id/txtScore"
-        app:layout_constraintTop_toBottomOf="@+id/txtScore" />
+        app:layout_constraintStart_toStartOf="@+id/txtPoints"
+        app:layout_constraintTop_toBottomOf="@+id/txtPoints" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/txtDifficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -468,7 +468,7 @@
         android:textAlignment="textStart"
         android:textColor="@color/text_color"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/txtScore"
+        app:layout_constraintEnd_toEndOf="@+id/txtPoints"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/textView4" />

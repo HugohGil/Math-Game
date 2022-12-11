@@ -7,18 +7,18 @@
     android:background="@color/background_color">
 
     <TextView
-        android:id="@+id/txtExpression3"
+        android:id="@+id/txtBonus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/default_number"
         android:textAlignment="textStart"
         android:textColor="@color/text_color"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/txtBonus"
+        app:layout_constraintBottom_toBottomOf="@+id/txtBonusLabel"
         app:layout_constraintEnd_toEndOf="@+id/txtOperator"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/txtBonus"
-        app:layout_constraintTop_toTopOf="@+id/txtBonus"
+        app:layout_constraintStart_toEndOf="@+id/txtBonusLabel"
+        app:layout_constraintTop_toTopOf="@+id/txtBonusLabel"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -50,7 +50,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView9" />
 
     <TextView
-        android:id="@+id/txtBonus"
+        android:id="@+id/txtBonusLabel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
@@ -58,7 +58,7 @@
         android:textColor="@color/text_color"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/txtExpression3"
+        app:layout_constraintEnd_toStartOf="@+id/txtBonus"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -110,7 +110,7 @@
         android:text="@string/operators"
         android:textColor="@color/text_color"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtBonus"
+        app:layout_constraintBottom_toTopOf="@+id/txtBonusLabel"
         app:layout_constraintEnd_toStartOf="@+id/txtOperator"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/textView11"
