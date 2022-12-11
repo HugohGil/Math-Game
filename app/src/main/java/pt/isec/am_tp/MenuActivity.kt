@@ -35,6 +35,7 @@ class MenuActivity : AppCompatActivity() {
     private var appLanguage = Locale.getDefault().language
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
         appLanguage = intent.getStringExtra(LANGUAGE_KEY).toString()
 
         val sharedPreferences: SharedPreferences = getSharedPreferences("profilePicturePathConfig", MODE_PRIVATE)
@@ -49,6 +50,11 @@ class MenuActivity : AppCompatActivity() {
             binding.btnProfile!!.setImageBitmap(bMap)
         }
 
+        appLanguage = intent.getStringExtra(LANGUAGE_KEY).toString()
+
+        val bMap = BitmapFactory.decodeFile(profilePicturePath)
+        binding.btnProfile!!.setImageBitmap(bMap)
+        //setPic(binding.btnProfile!!, profilePicturePath!!)
 
         binding.btnStart.setOnClickListener {
             val intent = Intent(this, GameModeActivity::class.java)
@@ -88,7 +94,8 @@ class MenuActivity : AppCompatActivity() {
     private fun changeLanguage() {
         val languages = arrayOf("English", "Português")
 
-        val dlgLanguage = AlertDialog.Builder(this)
+        AlertDialog.Builder(this)
+            .setIcon(android.R.drawable.ic_dialog_alert)
             .setTitle(R.string.msg_choose_language)
             .setSingleChoiceItems(languages, -1) { _, which ->
                 if (which == 0) {
@@ -98,8 +105,7 @@ class MenuActivity : AppCompatActivity() {
                 }
             }
             .setNegativeButton(R.string.msg_cancel, null)
-            .create()
-        dlgLanguage.show()
+            .show()
     }
 
     private fun setLocale(l: String) {
@@ -117,5 +123,4 @@ class MenuActivity : AppCompatActivity() {
         } else
             Toast.makeText(this, R.string.msg_error_language, Toast.LENGTH_LONG).show()
     }
-
 }
