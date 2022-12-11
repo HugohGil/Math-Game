@@ -1,5 +1,7 @@
 package pt.isec.am_tp
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Point
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -19,6 +21,19 @@ import kotlin.random.Random
 class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListener {
     companion object{
         const val MIN_DISTANCE = 100
+        private const val POINTS_KEY = "points"
+        private const val LEVEL_KEY = "level"
+
+        fun getIntent(
+            context: Context,
+            points: Int,
+            level: Int,
+        ): Intent {
+            val intent = Intent(context, SinglePlayerActivity::class.java)
+            intent.putExtra(POINTS_KEY, points)
+            intent.putExtra(LEVEL_KEY, level)
+            return intent
+        }
     }
 
     val singlePlayerViewModel : SinglePlayerViewModel by viewModels()
@@ -35,22 +50,67 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
     private var y2:Float = 0.0f
     private var height:Float = 0.0f
     private var width:Float = 0.0f
+    var countDownTimer: CountDownTimer? = null
+    private var timer:Int = 90
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySingleplayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        findViewById<TextView>(R.id.txtTimer)
-            .text = "${singlePlayerViewModel.timer}"
-
-        singlePlayerViewModel.operations.add("x")
-        singlePlayerViewModel.operations.add("÷")
-        singlePlayerViewModel.operations.add("+")
-        singlePlayerViewModel.operations.add("-")
-
+        val points = intent.getIntExtra(POINTS_KEY, 0)
+        val level = intent.getIntExtra(LEVEL_KEY, 1)
+        singlePlayerViewModel.points = points
+        singlePlayerViewModel.level = level
+        generateLevel()
         generateBoard()
         startTimer()
+    }
 
+    private fun generateLevel() {
+        singlePlayerViewModel.operations.add("+")
+        singlePlayerViewModel.operations.add("-")
+        when(singlePlayerViewModel.level){
+            2 -> {
+                timer = 60
+                singlePlayerViewModel.timerLimit = 60
+                singlePlayerViewModel.maxNumber = 20
+                singlePlayerViewModel.expressions = 2
+                singlePlayerViewModel.operations.add("x")
+                singlePlayerViewModel.operations.add("÷")
+                singlePlayerViewModel.bonus = 5
+            }
+            3-> {
+                timer = 30
+                singlePlayerViewModel.timerLimit = 30
+                singlePlayerViewModel.maxNumber = 100
+                singlePlayerViewModel.expressions = 2
+                singlePlayerViewModel.operations.add("x")
+                singlePlayerViewModel.operations.add("÷")
+                singlePlayerViewModel.bonus = 10
+            }
+        }
+        findViewById<TextView>(R.id.txtDifficulty)
+            .text = "${singlePlayerViewModel.level}"
+        findViewById<TextView>(R.id.txtExpressionsLeft)
+            .text = "${singlePlayerViewModel.expressions}"
+        findViewById<TextView>(R.id.txtPoints)
+            .text = "${singlePlayerViewModel.points}"
+    }
+
+    private fun startTimer() {
+        countDownTimer = object : CountDownTimer((timer*1000).toLong(), 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                findViewById<TextView>(R.id.txtTimer)
+                    .text = "$timer"
+                timer--
+            }
+
+            override fun onFinish() {
+                findViewById<TextView>(R.id.txtTimer)
+                    .text = "bingnbog"
+                //TODO ENDGAME ACTIVITY
+            }
+        }.start()
     }
 
     private fun generateBoard() {
@@ -182,21 +242,6 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         return result
     }
 
-    private fun startTimer() {
-        object : CountDownTimer((singlePlayerViewModel.timer*1000).toLong(), 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                findViewById<TextView>(R.id.txtTimer)
-                    .text = "${singlePlayerViewModel.timer}"
-                singlePlayerViewModel.timer--
-            }
-
-            override fun onFinish() {
-                findViewById<TextView>(R.id.txtTimer)
-                    .text = "bingbong"
-            }
-        }.start()
-    }
-
     //Gesture Detector
     private val gestureDetector : GestureDetector by lazy {
         GestureDetector(this, this)
@@ -215,6 +260,7 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
 
             val distanceX:Float = x2 - x1
             val distanceY:Float = y2 - y1
+            var points = 0
 
             if(abs(distanceX) > MIN_DISTANCE && abs(distanceY) > MIN_DISTANCE)      // no diagonal
                 return false
@@ -222,22 +268,55 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
                 Log.i("Swipe", "Horizontal Swipe")
                 val button: Button? = checkButton()
                 if(button != null){
-                    singlePlayerViewModel.points += checkGuess(rowEquationsSolution[checkRow(button)])
-                    findViewById<TextView>(R.id.txtScore)
+                    points = checkGuess(rowEquationsSolution[checkRow(button)])
+                    singlePlayerViewModel.points += points
+                    findViewById<TextView>(R.id.txtPoints)
                         .text = "${singlePlayerViewModel.points}"
+
                 }
             }
             else if(abs(distanceY) > MIN_DISTANCE){
                 Log.i("Swipe", "Vertical Swipe")
                 val button: Button? = checkButton()
                 if(button != null){
-                    singlePlayerViewModel.points += checkGuess(colEquationsSolution[checkColumn(button)])
-                    findViewById<TextView>(R.id.txtScore)
+                    points = checkGuess(colEquationsSolution[checkColumn(button)])
+                    singlePlayerViewModel.points += points
+                    findViewById<TextView>(R.id.txtPoints)
                         .text = "${singlePlayerViewModel.points}"
                 }
             }
+            if(points == 2) { // right option
+                correctExpression()
+            }
+            generateBoard()
         }
         return super.onTouchEvent(event)
+    }
+
+    private fun correctExpression() {
+        singlePlayerViewModel.expressions--
+        findViewById<TextView>(R.id.txtExpressionsLeft)
+            .text = "${singlePlayerViewModel.expressions}"
+        countDownTimer?.cancel()
+        timer += singlePlayerViewModel.bonus
+        if(timer > singlePlayerViewModel.timerLimit)
+            timer = singlePlayerViewModel.timerLimit
+        countDownTimer?.start()
+        if (singlePlayerViewModel.expressions == 0) {    // next level
+            checkEndGame()
+            countDownTimer?.cancel()
+            val intent = LoadingActivity.getIntent(
+                this,
+                singlePlayerViewModel.points,
+                singlePlayerViewModel.level
+            )
+            startActivity(intent)
+        }
+    }
+
+    private fun checkEndGame() {
+        //if(singlePlayerViewModel.level == 3)
+            //TODO ENDGAME ACTIVITY
     }
 
     private fun checkGuess(result: Float) : Int{

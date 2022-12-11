@@ -37,4 +37,5 @@
     <string name="time">Tempo</string>
     <string name="value_range">Gama de Valores</string>
     <string name="bonus_time">Tempo de Bónus</string>
+    <string name="expressions_left">Expressões por adivinhar: </string>
 </resources>

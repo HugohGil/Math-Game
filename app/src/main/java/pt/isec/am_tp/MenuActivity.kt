@@ -1,6 +1,7 @@
 package pt.isec.am_tp
 
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.BitmapFactory
@@ -17,13 +18,27 @@ import java.util.*
 
 
 class MenuActivity : AppCompatActivity() {
+    companion object {
+        private const val LANGUAGE_KEY = "language"
+
+        fun getIntent(
+            context: Context,
+            language: String,
+        ): Intent {
+            val intent = Intent(context, MenuActivity::class.java)
+            intent.putExtra(LANGUAGE_KEY, language)
+            return intent
+        }
+    }
     private lateinit var binding: ActivityMenuBinding
-    private var appLanguage = "en"
     private var currentLanguage: String? = null
     private var profilePicturePath: String? = null
+    private var appLanguage = Locale.getDefault().language
+    private var requestCode = 0
+    private var SECOND_ACTIVITY_REQUEST_CODE = 12
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        appLanguage = intent.getStringExtra(currentLanguage).toString()
+        appLanguage = intent.getStringExtra(LANGUAGE_KEY).toString()
 
         val sharedPreferences: SharedPreferences = getSharedPreferences("profilePicturePathConfig", MODE_PRIVATE)
         profilePicturePath = sharedPreferences.getString("path","")
@@ -97,12 +112,9 @@ class MenuActivity : AppCompatActivity() {
             val conf = res.configuration
             conf.locale = locale
             res.updateConfiguration(conf, dm)
-
             val intent = Intent(
-                this,
-                MenuActivity::class.java
+                Companion.getIntent(this, l)
             )
-            intent.putExtra(currentLanguage, l)
             startActivity(intent)
         } else
             Toast.makeText(this, R.string.msg_error_language, Toast.LENGTH_LONG).show()
