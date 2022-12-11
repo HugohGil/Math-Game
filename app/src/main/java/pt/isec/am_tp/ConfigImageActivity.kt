@@ -48,7 +48,7 @@ class ConfigImageActivity : AppCompatActivity(){
     fun updatePreview() {
         if (imagePath != null) {
             setPic(binding.frPreview, imagePath!!)
-            returnResult(imagePath);
+            //returnResult(imagePath);
         }
         else
             binding.frPreview.background = ResourcesCompat.getDrawable(resources,
