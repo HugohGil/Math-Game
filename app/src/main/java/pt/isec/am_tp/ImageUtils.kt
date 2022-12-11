@@ -5,34 +5,32 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
-import android.util.Log
 import android.view.View
-import android.widget.ImageButton
 import android.widget.ImageView
 import java.io.File
 import java.io.FileOutputStream
 import kotlin.math.max
 import kotlin.math.min
 
-fun setPic(view: View, path: String) {
-    getPic(view,path)?.also {
+fun setImage(view: View, path: String) {
+    getImage(view,path)?.also {
         when {
             view is ImageView -> (view as ImageView).setImageBitmap(it)
             else -> view.background = BitmapDrawable(view.resources, it)
         }
     }
 }
-fun getPic(view: View, path: String) : Bitmap? {
-    val targetW = view.width
-    val targetH = view.height
-    if (targetH < 1 || targetW < 1)
+fun getImage(view: View, path: String) : Bitmap? {
+    val targetWidth = view.width
+    val targetHeight = view.height
+    if (targetHeight < 1 || targetWidth < 1)
         return null
     val bmpOptions = BitmapFactory.Options()
     bmpOptions.inJustDecodeBounds = true
     BitmapFactory.decodeFile(path, bmpOptions)
-    val photoW = bmpOptions.outWidth
-    val photoH = bmpOptions.outHeight
-    val scale = max(1, min(photoW / targetW, photoH / targetH))
+    val photoWidth = bmpOptions.outWidth
+    val photoHeight = bmpOptions.outHeight
+    val scale = max(1, min(photoWidth / targetWidth, photoHeight / targetHeight))
     bmpOptions.inSampleSize = scale
     bmpOptions.inJustDecodeBounds = false
     return BitmapFactory.decodeFile(path, bmpOptions)
