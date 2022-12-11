@@ -31,11 +31,8 @@ class MenuActivity : AppCompatActivity() {
         }
     }
     private lateinit var binding: ActivityMenuBinding
-    private var currentLanguage: String? = null
     private var profilePicturePath: String? = null
     private var appLanguage = Locale.getDefault().language
-    private var requestCode = 0
-    private var SECOND_ACTIVITY_REQUEST_CODE = 12
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
@@ -48,11 +45,12 @@ class MenuActivity : AppCompatActivity() {
 
         binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        appLanguage = intent.getStringExtra(LANGUAGE_KEY).toString()
+        if(profilePicturePath!= "" && profilePicturePath != null){
+            val bMap = BitmapFactory.decodeFile(profilePicturePath)
+            binding.btnProfile!!.setImageBitmap(bMap)
+        }
 
-        val bMap = BitmapFactory.decodeFile(profilePicturePath)
-        binding.btnProfile!!.setImageBitmap(bMap)
-        //setPic(binding.btnProfile!!, profilePicturePath!!)
+        appLanguage = intent.getStringExtra(LANGUAGE_KEY).toString()
 
         binding.btnStart.setOnClickListener {
             val intent = Intent(this, GameModeActivity::class.java)
