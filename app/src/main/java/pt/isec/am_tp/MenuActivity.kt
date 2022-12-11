@@ -52,10 +52,6 @@ class MenuActivity : AppCompatActivity() {
 
         appLanguage = intent.getStringExtra(LANGUAGE_KEY).toString()
 
-        val bMap = BitmapFactory.decodeFile(profilePicturePath)
-        binding.btnProfile!!.setImageBitmap(bMap)
-        //setPic(binding.btnProfile!!, profilePicturePath!!)
-
         binding.btnStart.setOnClickListener {
             val intent = Intent(this, GameModeActivity::class.java)
             startActivity(intent)
