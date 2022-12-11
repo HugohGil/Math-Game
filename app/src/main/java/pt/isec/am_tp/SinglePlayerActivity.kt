@@ -304,7 +304,7 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         timer += singlePlayerViewModel.bonus
         if(timer > singlePlayerViewModel.timerLimit)
             timer = singlePlayerViewModel.timerLimit
-        countDownTimer?.start()
+        startTimer()
         if (singlePlayerViewModel.expressions == 0) {    // next level
             checkEndGame()
             countDownTimer?.cancel()

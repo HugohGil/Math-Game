@@ -27,6 +27,8 @@ class LoadingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoadingBinding
     private var points: Int = 0
     private var level: Int = 0
+    var countDownTimer: CountDownTimer? = null
+    var timer = 5
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoadingBinding.inflate(layoutInflater)
@@ -35,6 +37,7 @@ class LoadingActivity : AppCompatActivity() {
         points = intent.getIntExtra(POINTS_KEY, 0)
         level = intent.getIntExtra(LEVEL_KEY, 0)
         level++
+        var isPaused = false
         findViewById<TextView>(R.id.txtPoints)
             .text = "$points"
         findViewById<TextView>(R.id.txtDifficulty)
@@ -68,15 +71,24 @@ class LoadingActivity : AppCompatActivity() {
         }
 
         startTimer()
+        binding.btnPause?.setOnClickListener {
+            isPaused = if(!isPaused){
+                countDownTimer?.cancel()
+                true
+            } else{
+                startTimer()
+                false
+            }
+        }
     }
 
     private fun startTimer() {
-        var timer = 5
         val context = this
-        object : CountDownTimer((timer*1000).toLong(), 1000) {
+        countDownTimer = object : CountDownTimer((timer*1000).toLong(), 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 findViewById<TextView>(R.id.txtCountDown)
                     .text = "$timer"
+                println(timer)
                 timer--
             }
 

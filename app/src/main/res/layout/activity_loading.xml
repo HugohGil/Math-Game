@@ -56,7 +56,7 @@
         android:text="@string/bonus_time"
         android:textColor="@color/text_color"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/btnPause"
         app:layout_constraintEnd_toStartOf="@+id/txtBonus"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/textView9"
@@ -222,7 +222,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtCountDown" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnPause"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
         android:layout_marginBottom="70dp"
