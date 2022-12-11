@@ -35,8 +35,17 @@ class ConfigImageActivity : AppCompatActivity(){
         mode = intent.getIntExtra(MODE_KEY, GALLERY)
         val sharedPreferences: SharedPreferences = getSharedPreferences("profilePicturePathConfig", MODE_PRIVATE)
         imagePath = sharedPreferences.getString("path","")
-        val bMap= BitmapFactory.decodeFile(imagePath)
-        binding.frPreview.background = BitmapDrawable(resources,bMap)
+        if(imagePath != "" &&imagePath != null){
+            val bMap= BitmapFactory.decodeFile(imagePath)
+            binding.frPreview.background = BitmapDrawable(resources,bMap)
+        }
+        else{
+            binding.frPreview.background = ResourcesCompat.getDrawable(resources,
+                android.R.drawable.ic_menu_report_image,
+                null)
+        }
+
+
 
 
         when (mode) {
