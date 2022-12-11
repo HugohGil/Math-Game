@@ -1,6 +1,7 @@
 package pt.isec.am_tp
 
 import android.R.attr.button
+import android.content.Intent
 import android.graphics.Point
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -42,6 +43,7 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
 
         singlePlayerViewModel.operations.add("+")
         singlePlayerViewModel.operations.add("-")
+
 
         generateBoard()
         startTimer()

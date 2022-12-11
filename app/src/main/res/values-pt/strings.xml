@@ -31,4 +31,10 @@
     <string name="year">2022/2023</string>
     <string name="subject">Arquiteturas Móveis</string>
     <string name="isec">ISEC</string>
+    <string name="next_level">Próximo Nível</string>
+    <string name="expressions">Expressões</string>
+    <string name="operators">Operadores</string>
+    <string name="time">Tempo</string>
+    <string name="value_range">Gama de Valores</string>
+    <string name="bonus_time">Tempo de Bónus</string>
 </resources>

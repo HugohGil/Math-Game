@@ -30,5 +30,12 @@
     <string name="year">2022/2023</string>
     <string name="subject">Mobile Architectures</string>
     <string name="isec">ISEC</string>
+    <string name="default_countdown" translatable="false">5</string>
+    <string name="next_level">Next Level</string>
+    <string name="expressions">Expressions</string>
+    <string name="operators">Operators</string>
+    <string name="time">Time</string>
+    <string name="value_range">Value Range</string>
+    <string name="bonus_time">Bonus Time</string>
 
 </resources>
