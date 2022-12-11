@@ -68,24 +68,6 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         generateBoard()
         startTimer()
     }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                onBackPressed()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-    override fun onBackPressed() {
-        AlertDialog.Builder(this)
-            .setIcon(android.R.drawable.ic_dialog_alert)
-            .setTitle(R.string.msg_title_backout)
-            .setMessage(R.string.msg_backout)
-            .setPositiveButton(R.string.msg_confirm) { _, _ -> finish() }
-            .setNegativeButton(R.string.msg_deny, null)
-            .show()
-    }
 
     private fun generateLevel() {
         singlePlayerViewModel.operations.add("+")
@@ -293,7 +275,7 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
                     singlePlayerViewModel.points += points
                     findViewById<TextView>(R.id.txtPoints)
                         .text = "${singlePlayerViewModel.points}"
-
+                    generateBoard()
                 }
             }
             else if(abs(distanceY) > MIN_DISTANCE){
@@ -304,12 +286,12 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
                     singlePlayerViewModel.points += points
                     findViewById<TextView>(R.id.txtPoints)
                         .text = "${singlePlayerViewModel.points}"
+                    generateBoard()
                 }
             }
             if(points == 2) { // right option
                 correctExpression()
             }
-            generateBoard()
         }
         return super.onTouchEvent(event)
     }
@@ -430,6 +412,28 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         val location = IntArray(2)
         view.getLocationInWindow(location)
         return Point(location[0], location[1])
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+    override fun onBackPressed() {
+        AlertDialog.Builder(this)
+            .setIcon(android.R.drawable.ic_dialog_alert)
+            .setTitle(R.string.msg_title_backout)
+            .setMessage(R.string.msg_backout)
+            .setPositiveButton(R.string.msg_confirm) { _, _ ->
+                val intent = Intent(this, MenuActivity::class.java)
+                startActivity(intent)
+            }
+            .setNegativeButton(R.string.msg_deny, null)
+            .show()
     }
 
     override fun onDown(p0: MotionEvent?): Boolean {
