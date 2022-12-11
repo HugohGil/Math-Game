@@ -2,21 +2,27 @@
     <string name="app_name">AM_TP</string>
     <string name="change_language">Change Language</string>
     <string name="top_5">Top 5</string>
+    <string name="profile">Profile</string>
+    <string name="change_profile_picture">Change profile picture</string>
     <string name="math_game">Math Game</string>
     <string name="start_game">Start Game</string>
     <string name="credits">Credits</string>
     <string name="msg_choose_language">Select the language</string>
     <string name="msg_error_language">That language is already being used</string>
     <string name="msg_cancel">Cancel</string>
+    <string name="msg_score">Score:</string>
+    <string name="msg_time">Time:</string>
     <string name="game_mode_title">Game mode</string>
     <string name="game_mode_btn_single">Singleplayer</string>
     <string name="game_mode_btn_multi">Multiplayer</string>
+    <string name="choose_image">Choose image</string>
+    <string name="take_photo">Take photo</string>
     <string name="your_points">Points</string>
     <string name="default_number">0</string>
     <string name="default_timer">00:00</string>
     <string name="difficulty">Difficulty</string>
-    <string name="top_5_title">Top 5 Players</string>
-    <string name="top_5_default_names">Player Name</string>
+    <string name="top_5_title">Top 5 Scores</string>
+    <string name="top_5_default_names" />
     <string name="credit_title">Credits</string>
     <string name="hugo_info">Hugo Gil</string>
     <string name="renato_info">Renato Santos</string>
@@ -24,5 +30,12 @@
     <string name="year">2022/2023</string>
     <string name="subject">Mobile Architectures</string>
     <string name="isec">ISEC</string>
+    <string name="default_countdown" translatable="false">5</string>
+    <string name="next_level">Next Level</string>
+    <string name="expressions">Expressions</string>
+    <string name="operators">Operators</string>
+    <string name="time">Time</string>
+    <string name="value_range">Value Range</string>
+    <string name="bonus_time">Bonus Time</string>
 
 </resources>

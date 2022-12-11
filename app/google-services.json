@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "966858740755",
+    "project_id": "tp-am-3d5fe",
+    "storage_bucket": "tp-am-3d5fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966858740755:android:ff3305c5f7fb92bd665be6",
+        "android_client_info": {
+          "package_name": "pt.isec.am_tp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "966858740755-tul174bvfhu2ri5go68jjup6cnff3iqn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHGcnFIAj-TDuRuCq_7wODibAcEsVClVU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "966858740755-tul174bvfhu2ri5go68jjup6cnff3iqn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

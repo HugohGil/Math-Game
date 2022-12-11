@@ -1,17 +1,24 @@
 package pt.isec.am_tp
 
+
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.annotation.Nullable
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import pt.isec.am_tp.databinding.ActivityMainBinding
 import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var appLanguage = "en"
     private var currentLanguage: String? = null
+    private var requestCode = 0
+    private var SECOND_ACTIVITY_REQUEST_CODE = 12
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,7 +35,18 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.btnProfile?.setOnClickListener {
+            val intent = Intent(this, ConfigImageActivity::class.java)
+            startActivityForResult(intent,requestCode);
+        }
         binding.btnTop5.setOnClickListener {
+            val db = Firebase.firestore                     //TODO this will be moved to when player completes game
+            val score = hashMapOf(
+            "points" to 40,
+            "time" to 20
+            )
+            db.collection("Score").add(score)
+
             val intent = Intent(this, Top5Activity::class.java)
             startActivity(intent)
         }
@@ -42,7 +60,26 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
+    override fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent?) {
+        if (requestCode == SECOND_ACTIVITY_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                if (data != null) {
+                    val bundle = data.extras
+                    var path = bundle?.getString("String");
+                    println("-------------------------------------------------" + path)
+                    binding.btnProfile?.let {
+                        if (path != null) {
+                            getPic(it,path)
+                        }
+                    }
+                }
+            } else {
+                // handle cancellation
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data)
+        }
+    }
     private fun setDefaultLanguage() {
         if (Locale.getDefault().language == "pt")
             setLocale("pt")

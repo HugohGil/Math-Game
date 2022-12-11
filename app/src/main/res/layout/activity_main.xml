@@ -17,7 +17,7 @@
         android:textColor="@color/text_color"
         app:layout_constraintBottom_toTopOf="@+id/btnTop5"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/txtTitle"
         app:layout_constraintVertical_bias="0.57"
@@ -28,7 +28,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="@color/primary"
         android:text="@string/credits"
         android:textColor="@color/text_color"
@@ -48,7 +48,7 @@
         android:textColor="@color/text_color"
         app:layout_constraintBottom_toTopOf="@+id/btnCredits"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/btnTop5" />
 
@@ -65,6 +65,14 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/btnStart" />
+
+    <ImageButton
+        android:id="@+id/btnProfile"
+        android:layout_width="40dp"
+        android:layout_height="65dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_background" />
 
     <TextView
         android:id="@+id/txtTitle"
