@@ -38,6 +38,9 @@
     <string name="value_range">Value Range</string>
     <string name="bonus_time">Bonus Time</string>
     <string name="expressions_left">Expressions left: </string>
+    <string name="game_over">Game Over</string>
+    <string name="difficulty_level">Level Reached</string>
+    <string name="pause_game">Pause</string>
     <string name="msg_backout">Are you sure you want to exit the game?</string>
     <string name="msg_title_backout">Exit the Game</string>
     <string name="msg_confirm">Yes</string>

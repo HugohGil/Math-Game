@@ -38,6 +38,10 @@
     <string name="value_range">Gama de Valores</string>
     <string name="bonus_time">Tempo de Bónus</string>
     <string name="expressions_left">Expressões por adivinhar: </string>
+    <string name="game_over">Fim do Jogo</string>
+    <string name="difficulty_level">Nível Alcançado</string>
+    <string name="pause_game">Pausar</string>
+
     <string name="msg_backout">Tem a certeza que deseja sair do jogo?</string>
     <string name="msg_title_backout">Sair do Jogo</string>
     <string name="msg_confirm">Sim</string>
