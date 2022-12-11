@@ -45,9 +45,6 @@ class ConfigImageActivity : AppCompatActivity(){
                 null)
         }
 
-
-
-
         when (mode) {
             GALLERY -> binding.btnChange.apply {
                 text = getString(R.string.choose_image)
@@ -74,7 +71,7 @@ class ConfigImageActivity : AppCompatActivity(){
     }
     fun updatePreview() {
         if (imagePath != null) {
-            setPic(binding.frPreview, imagePath!!)
+            setImage(binding.frPreview, imagePath!!)
 
         }
         else
@@ -120,10 +117,10 @@ class ConfigImageActivity : AppCompatActivity(){
 
         imagePath = uri?.let { createFileFromUri(this, it) }
         Log.i("IMAGEPATH", imagePath.toString())
-        returnResult(imagePath);
+        SavePath(imagePath);
         updatePreview()
     }
-    private fun returnResult(result: String?) {
+    private fun SavePath(result: String?) {
         var sharedPreferences: SharedPreferences = getSharedPreferences("profilePicturePathConfig", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("path",imagePath)

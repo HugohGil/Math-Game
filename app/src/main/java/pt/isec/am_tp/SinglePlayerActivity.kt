@@ -94,7 +94,7 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         }
         findViewById<TextView>(R.id.txtDifficulty)
             .text = "${singlePlayerViewModel.level}"
-        findViewById<TextView>(R.id.txtExpressionsLeft)
+        findViewById<TextView>(R.id.txtExpression)
             .text = "${singlePlayerViewModel.expressions}"
         findViewById<TextView>(R.id.txtPoints)
             .text = "${singlePlayerViewModel.points}"
@@ -298,7 +298,7 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
 
     private fun correctExpression() {
         singlePlayerViewModel.expressions--
-        findViewById<TextView>(R.id.txtExpressionsLeft)
+        findViewById<TextView>(R.id.txtExpression)
             .text = "${singlePlayerViewModel.expressions}"
         countDownTimer?.cancel()
         timer += singlePlayerViewModel.bonus
