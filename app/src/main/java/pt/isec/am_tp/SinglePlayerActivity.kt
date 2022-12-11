@@ -54,7 +54,6 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
     }
 
     private fun generateBoard() {
-        Log.i("GENERATE BOARD", "GENERATING BOARD")
         /*
         Generates game board
          */
@@ -112,7 +111,6 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         for(i in colEquations.indices){
             colEquationsSolution[i] = solveEquation(colEquations[i])
         }
-        Log.i("GENERATE BOARD", "BOARD GENERATED")
     }
 
     private fun solveEquation(equation : Array<Button?>) : Float{
@@ -127,6 +125,7 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         }
         var parts: ArrayList<String> = ArrayList(string.split("|"))
         parts.removeLast() //String.split creates a unnecessary token
+        Log.i("Solve Equation", parts.toString())
         while(parts.size != 1) {
             for (i in 0 until parts.size) { //calculates first and/or second operation if they are multiplication or division
                 if (!parts.contains("x") && !parts.contains("÷"))
@@ -136,9 +135,9 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
                         val a = parts[i - 1]
                         val b = parts[i]
                         val c = parts[i + 1]
-                        parts.remove(a)
-                        parts.remove(b)
-                        parts.remove(c)
+                        parts.removeAt(i+1)
+                        parts.removeAt(i)
+                        parts.removeAt(i-1)
                         val d = solveArithmetic(a.toFloat(), b, c.toFloat()).toString()
                         parts.add(i - 1, d)
                         if (parts.size == 1 || (!parts.contains("x") && !parts.contains("÷")))
@@ -154,9 +153,9 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
                         val a = parts[i - 1]
                         val b = parts[i]
                         val c = parts[i + 1]
-                        parts.remove(a)
-                        parts.remove(b)
-                        parts.remove(c)
+                        parts.removeAt(i + 1)
+                        parts.removeAt(i)
+                        parts.removeAt(i - 1)
                         val d = solveArithmetic(a.toFloat(), b, c.toFloat()).toString()
                         parts.add(i - 1, d)
                         if (parts.size == 1 || (!parts.contains("+") && !parts.contains("-")))
@@ -247,8 +246,16 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
             1 -> 2nd max solution guessed
             0 -> failed guessing
          */
-        val solutionArray : ArrayList<Float> = ArrayList(colEquationsSolution.toList())
-        solutionArray.addAll(rowEquationsSolution.toList())
+        val temp : ArrayList<Float> = ArrayList(colEquationsSolution.toList())
+        temp.addAll(rowEquationsSolution.toList())
+        for(i in temp)
+            Log.i("SOLUTION TEMP", "$i")
+        val solutionArray : ArrayList<Float> = ArrayList()
+        for(i in temp){
+            if(!solutionArray.contains(i)){
+                solutionArray.add(i)
+            }
+        }
         solutionArray.sort()
         solutionArray.reverse()
         for(i in solutionArray)
