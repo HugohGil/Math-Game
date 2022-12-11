@@ -222,16 +222,18 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
                 Log.i("Swipe", "Horizontal Swipe")
                 val button: Button? = checkButton()
                 if(button != null){
-                    val a = checkGuess(rowEquationsSolution[checkRow(button)])
-                    Log.i("Guess Points", "$a")
+                    singlePlayerViewModel.points += checkGuess(rowEquationsSolution[checkRow(button)])
+                    findViewById<TextView>(R.id.txtScore)
+                        .text = "${singlePlayerViewModel.points}"
                 }
             }
             else if(abs(distanceY) > MIN_DISTANCE){
                 Log.i("Swipe", "Vertical Swipe")
                 val button: Button? = checkButton()
                 if(button != null){
-                    val a = checkGuess(colEquationsSolution[checkColumn(button)])
-                    Log.i("Guess Points", "$a")
+                    singlePlayerViewModel.points += checkGuess(colEquationsSolution[checkColumn(button)])
+                    findViewById<TextView>(R.id.txtScore)
+                        .text = "${singlePlayerViewModel.points}"
                 }
             }
         }

@@ -6,4 +6,5 @@ class SinglePlayerViewModel : ViewModel() {
     var timer = 60
     var operations: MutableList<String> = ArrayList()
     var maxNumber = 10
+    var points = 0
 }

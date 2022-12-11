@@ -30,28 +30,35 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Top5Activity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity">
+            android:name=".MenuActivity"
+            android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=" " />
+        </activity>
+        <activity
+            android:name=".Top5Activity"
+            android:exported="false"
+            android:parentActivityName=".MenuActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
         </activity>
         <activity
             android:name=".CreditsActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MenuActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".MenuActivity" />
         </activity>
         <activity
             android:name=".GameModeActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MenuActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".MenuActivity" />
         </activity>
         <activity
             android:name=".SinglePlayerActivity"
@@ -64,18 +71,18 @@
         <activity
             android:name=".ConfigImageActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MenuActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".MenuActivity" />
         </activity>
         <activity
             android:name=".LoadingActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MenuActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".MenuActivity" />
         </activity>
     </application>
 
