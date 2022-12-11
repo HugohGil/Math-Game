@@ -7,11 +7,13 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.GestureDetector
+import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import pt.isec.am_tp.databinding.ActivitySingleplayerBinding
 import java.lang.Math.abs
@@ -57,6 +59,7 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         super.onCreate(savedInstanceState)
         binding = ActivitySingleplayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         val points = intent.getIntExtra(POINTS_KEY, 0)
         val level = intent.getIntExtra(LEVEL_KEY, 1)
         singlePlayerViewModel.points = points
@@ -64,6 +67,24 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         generateLevel()
         generateBoard()
         startTimer()
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+    override fun onBackPressed() {
+        AlertDialog.Builder(this)
+            .setIcon(android.R.drawable.ic_dialog_alert)
+            .setTitle(R.string.msg_title_backout)
+            .setMessage(R.string.msg_backout)
+            .setPositiveButton(R.string.msg_confirm) { _, _ -> finish() }
+            .setNegativeButton(R.string.msg_deny, null)
+            .show()
     }
 
     private fun generateLevel() {
@@ -436,4 +457,5 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         //Log.i("GESTURE", "onFling: ")
         return true
     }
+
 }

@@ -31,6 +31,7 @@ class LoadingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoadingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
         points = intent.getIntExtra(POINTS_KEY, 0)
         level = intent.getIntExtra(LEVEL_KEY, 0)
         level++

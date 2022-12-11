@@ -33,11 +33,10 @@ class MenuActivity : AppCompatActivity() {
     private var SECOND_ACTIVITY_REQUEST_CODE = 12
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        appLanguage = intent.getStringExtra(LANGUAGE_KEY).toString()
-
-
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
         binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        appLanguage = intent.getStringExtra(LANGUAGE_KEY).toString()
 
         binding.btnStart.setOnClickListener {
             val intent = Intent(this, GameModeActivity::class.java)
@@ -93,7 +92,8 @@ class MenuActivity : AppCompatActivity() {
     private fun changeLanguage() {
         val languages = arrayOf("English", "Português")
 
-        val dlgLanguage = AlertDialog.Builder(this)
+        AlertDialog.Builder(this)
+            .setIcon(android.R.drawable.ic_dialog_alert)
             .setTitle(R.string.msg_choose_language)
             .setSingleChoiceItems(languages, -1) { _, which ->
                 if (which == 0) {
@@ -103,8 +103,7 @@ class MenuActivity : AppCompatActivity() {
                 }
             }
             .setNegativeButton(R.string.msg_cancel, null)
-            .create()
-        dlgLanguage.show()
+            .show()
     }
 
     private fun setLocale(l: String) {
