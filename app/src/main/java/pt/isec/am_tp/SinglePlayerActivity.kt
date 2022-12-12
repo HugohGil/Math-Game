@@ -311,9 +311,9 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         startTimer()
         if (singlePlayerViewModel.expressions == 0) {    // next level
             countDownTimer?.cancel()
-            println(singlePlayerViewModel.level)
-            if(singlePlayerViewModel.level == 3)
+            if(singlePlayerViewModel.level == 3){
                 endGame()
+            }
             else {
                 val intent = LoadingActivity.getIntent(
                     this,
@@ -443,6 +443,7 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
             .setTitle(R.string.msg_title_backout)
             .setMessage(R.string.msg_backout)
             .setPositiveButton(R.string.msg_confirm) { _, _ ->
+                countDownTimer?.cancel()
                 val intent = Intent(this, MenuActivity::class.java)
                 startActivity(intent)
             }

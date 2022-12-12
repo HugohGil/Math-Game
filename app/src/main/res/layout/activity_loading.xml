@@ -56,7 +56,7 @@
         android:text="@string/bonus_time"
         android:textColor="@color/text_color"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnPause"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/txtBonus"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/textView9"
@@ -92,7 +92,6 @@
         android:id="@+id/textView6"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
         android:text="@string/difficulty"
         android:textColor="@color/text_color"
         android:textSize="20sp"
@@ -101,6 +100,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.3"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
@@ -221,17 +221,24 @@
         app:layout_constraintStart_toStartOf="@+id/txtCountDown"
         app:layout_constraintTop_toBottomOf="@+id/txtCountDown" />
 
-    <Button
+    <ToggleButton
+
         android:id="@+id/btnPause"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_marginBottom="70dp"
+        android:layout_width="61dp"
+        android:layout_height="48dp"
+        android:background="@drawable/check"
+        android:checked="false"
         android:text="@string/pause_game"
-        android:textSize="20sp"
+        android:textOff=""
+        android:textOn=""
+        android:textSize="16sp"
         app:cornerRadius="35dp"
         app:icon="@drawable/ic_baseline_pause_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/txtBonus"
-        app:layout_constraintStart_toStartOf="@+id/txtBonusLabel" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.83"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

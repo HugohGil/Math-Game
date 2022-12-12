@@ -2,8 +2,11 @@ package pt.isec.am_tp
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Point
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import pt.isec.am_tp.databinding.ActivityLoadingBinding
@@ -93,7 +96,6 @@ class LoadingActivity : AppCompatActivity() {
             override fun onTick(millisUntilFinished: Long) {
                 findViewById<TextView>(R.id.txtCountDown)
                     .text = "$timer"
-                println(timer)
                 timer--
             }
 
