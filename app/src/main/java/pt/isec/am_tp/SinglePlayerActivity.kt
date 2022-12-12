@@ -25,7 +25,7 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         const val MIN_DISTANCE = 100
         private const val POINTS_KEY = "points"
         private const val LEVEL_KEY = "level"
-        private const val TIME_KEY = "level"
+        private const val TIME_KEY = "totalTime"
 
         fun getIntent(
             context: Context,

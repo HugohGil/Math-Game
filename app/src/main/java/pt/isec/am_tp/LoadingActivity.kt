@@ -12,7 +12,7 @@ class LoadingActivity : AppCompatActivity() {
     companion object {
         private const val POINTS_KEY = "points"
         private const val LEVEL_KEY = "level"
-        private const val TIME_KEY = "level"
+        private const val TIME_KEY = "totalTime"
 
         fun getIntent(
             context: Context,
