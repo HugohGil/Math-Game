@@ -20,7 +20,7 @@
     <string name="take_photo">Tire uma foto</string>
     <string name="your_points">Pontuação</string>
     <string name="default_number">0</string>
-    <string name="default_timer">00:00</string>
+    <string name="default_timer">0</string>
     <string name="difficulty">Dificuldade</string>
     <string name="top_5_title">Top 5 Pontuações</string>
     <string name="top_5_default_names" />

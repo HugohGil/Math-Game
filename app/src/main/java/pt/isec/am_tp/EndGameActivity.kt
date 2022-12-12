@@ -36,10 +36,12 @@ class EndGameActivity : AppCompatActivity() {
         val points = intent.getIntExtra(POINTS_KEY, 0)
         val level = intent.getIntExtra(LEVEL_KEY, 0)
         val totalTime = intent.getIntExtra(TIME_KEY, 0)
-
-
-
-
+        findViewById<TextView>(R.id.txtPointsEndGame)
+            .text = "$points"
+        findViewById<TextView>(R.id.txtLevelEndGame)
+            .text = "$level"
+        findViewById<TextView>(R.id.txtTimerEndGame)
+            .text = "$totalTime"
     }
 
 }

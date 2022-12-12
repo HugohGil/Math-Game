@@ -310,20 +310,24 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
             timer = singlePlayerViewModel.timerLimit
         startTimer()
         if (singlePlayerViewModel.expressions == 0) {    // next level
-            endGame()
             countDownTimer?.cancel()
-            val intent = LoadingActivity.getIntent(
-                this,
-                singlePlayerViewModel.points,
-                singlePlayerViewModel.level,
-                totalTime
-            )
-            startActivity(intent)
+            println(singlePlayerViewModel.level)
+            if(singlePlayerViewModel.level == 3)
+                endGame()
+            else {
+                val intent = LoadingActivity.getIntent(
+                    this,
+                    singlePlayerViewModel.points,
+                    singlePlayerViewModel.level,
+                    totalTime
+                )
+                startActivity(intent)
+            }
         }
     }
 
     private fun endGame() {
-        val intent = LoadingActivity.getIntent(
+        val intent = EndGameActivity.getIntent(
             this,
             singlePlayerViewModel.points,
             singlePlayerViewModel.level,
