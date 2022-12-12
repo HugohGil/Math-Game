@@ -66,13 +66,6 @@ class MenuActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.btnTop5.setOnClickListener {
-            val db = Firebase.firestore                     //TODO this will be moved to when player completes game
-            val score = hashMapOf(
-            "points" to 40,
-            "time" to 20
-            )
-            db.collection("Score").add(score)
-
             val intent = Intent(this, Top5Activity::class.java)
             startActivity(intent)
         }

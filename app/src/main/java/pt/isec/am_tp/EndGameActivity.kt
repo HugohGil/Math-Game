@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import pt.isec.am_tp.databinding.ActivityEndGameBinding
 import pt.isec.am_tp.databinding.ActivityLoadingBinding
 
@@ -42,6 +44,13 @@ class EndGameActivity : AppCompatActivity() {
             .text = "$level"
         findViewById<TextView>(R.id.txtTimerEndGame)
             .text = "$totalTime"
+
+        val db = Firebase.firestore
+        val score = hashMapOf(
+            "points" to points,
+            "time" to totalTime
+        )
+        db.collection("Score").add(score)
     }
 
 }

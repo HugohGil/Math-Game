@@ -28,8 +28,8 @@ class Top5Activity : AppCompatActivity() {
                 for (document in result) {
                     if(i == 5)
                         break
-                    val display = "${getString(R.string.msg_score)} ${document.data.get("points")}" +
-                            " ${getString(R.string.msg_time)} ${document.data.get("time")}"
+                    val display = "${getString(R.string.msg_score)} ${document.data["points"]}" +
+                            " ${getString(R.string.msg_time)} ${document.data["time"]}"
                     Log.d(TAG, "${document.id} => ${document.data}")
                     findViewById<TextView>(ids[i])
                         .text = display

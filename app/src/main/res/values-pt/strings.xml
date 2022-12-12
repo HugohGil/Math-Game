@@ -11,7 +11,7 @@
     <string name="msg_choose_language">Selecione a linguagem</string>
     <string name="msg_error_language">Essa linguagem já está a ser usada</string>
     <string name="msg_cancel">Cancelar</string>
-    <string name="msg_score">Pontuação:</string>
+    <string name="msg_score">Pontos:</string>
     <string name="msg_time">Tempo:</string>
     <string name="game_mode_title">Modo de jogo</string>
     <string name="game_mode_btn_single">Um jogador</string>
