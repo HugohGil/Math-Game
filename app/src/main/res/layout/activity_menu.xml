@@ -99,15 +99,18 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
         android:id="@+id/btnProfile"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="@color/node_main"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/profile_picture_shape"
         android:contentDescription="@string/profile"
-        app:layout_constraintBottom_toBottomOf="@+id/txtTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtTitle"
-        app:layout_constraintTop_toTopOf="@+id/txtTitle"
+        app:layout_constraintEnd_toEndOf="@+id/txtTitle"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/txtTitle"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle"
         app:srcCompat="@drawable/profile_vector" />
 
 

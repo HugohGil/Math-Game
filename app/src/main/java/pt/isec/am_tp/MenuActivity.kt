@@ -5,8 +5,10 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.BitmapFactory
+import android.media.Image
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -47,7 +49,8 @@ class MenuActivity : AppCompatActivity() {
         setContentView(binding.root)
         if(profilePicturePath!= "" && profilePicturePath != null){
             val bMap = BitmapFactory.decodeFile(profilePicturePath)
-            //binding.btnProfile!!.setImageBitmap(bMap)
+            val imageButton : ImageButton = findViewById(R.id.btnProfile)
+            imageButton.setImageBitmap(bMap)
         }
 
         appLanguage = intent.getStringExtra(LANGUAGE_KEY).toString()
