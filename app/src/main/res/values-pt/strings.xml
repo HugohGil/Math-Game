@@ -41,7 +41,7 @@
     <string name="game_over">Fim do Jogo</string>
     <string name="difficulty_level">Nível Alcançado</string>
     <string name="pause_game">Pausar</string>
-
+    <string name="time_spent">Tempo Gasto</string>
     <string name="msg_backout">Tem a certeza que deseja sair do jogo?</string>
     <string name="msg_title_backout">Sair do Jogo</string>
     <string name="msg_confirm">Sim</string>
