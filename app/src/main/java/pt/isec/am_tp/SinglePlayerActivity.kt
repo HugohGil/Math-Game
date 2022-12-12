@@ -115,9 +115,7 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
             }
 
             override fun onFinish() {
-                findViewById<TextView>(R.id.txtTimer)
-                    .text = "bingnbog"
-                //TODO ENDGAME ACTIVITY
+                endGame()
             }
         }.start()
     }
@@ -312,7 +310,7 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
             timer = singlePlayerViewModel.timerLimit
         startTimer()
         if (singlePlayerViewModel.expressions == 0) {    // next level
-            checkEndGame()
+            endGame()
             countDownTimer?.cancel()
             val intent = LoadingActivity.getIntent(
                 this,
@@ -324,9 +322,14 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         }
     }
 
-    private fun checkEndGame() {
-        //if(singlePlayerViewModel.level == 3)
-            //TODO ENDGAME ACTIVITY
+    private fun endGame() {
+        val intent = LoadingActivity.getIntent(
+            this,
+            singlePlayerViewModel.points,
+            singlePlayerViewModel.level,
+            totalTime
+        )
+        startActivity(intent)
     }
 
     private fun checkGuess(result: Float) : Int{
