@@ -25,15 +25,18 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         const val MIN_DISTANCE = 100
         private const val POINTS_KEY = "points"
         private const val LEVEL_KEY = "level"
+        private const val TIME_KEY = "totalTime"
 
         fun getIntent(
             context: Context,
             points: Int,
             level: Int,
+            totalTime: Int,
         ): Intent {
             val intent = Intent(context, SinglePlayerActivity::class.java)
             intent.putExtra(POINTS_KEY, points)
             intent.putExtra(LEVEL_KEY, level)
+            intent.putExtra(TIME_KEY, totalTime)
             return intent
         }
     }
@@ -54,6 +57,7 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
     private var width:Float = 0.0f
     var countDownTimer: CountDownTimer? = null
     private var timer:Int = 90
+    private var totalTime:Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +66,7 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
 
         val points = intent.getIntExtra(POINTS_KEY, 0)
         val level = intent.getIntExtra(LEVEL_KEY, 1)
+        totalTime = intent.getIntExtra(TIME_KEY, 0)
         singlePlayerViewModel.points = points
         singlePlayerViewModel.level = level
         generateLevel()
@@ -106,6 +111,7 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
                 findViewById<TextView>(R.id.txtTimer)
                     .text = "$timer"
                 timer--
+                totalTime++
             }
 
             override fun onFinish() {
@@ -311,7 +317,8 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
             val intent = LoadingActivity.getIntent(
                 this,
                 singlePlayerViewModel.points,
-                singlePlayerViewModel.level
+                singlePlayerViewModel.level,
+                totalTime
             )
             startActivity(intent)
         }

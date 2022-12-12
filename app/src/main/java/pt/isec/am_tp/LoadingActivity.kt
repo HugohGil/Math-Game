@@ -12,15 +12,18 @@ class LoadingActivity : AppCompatActivity() {
     companion object {
         private const val POINTS_KEY = "points"
         private const val LEVEL_KEY = "level"
+        private const val TIME_KEY = "totalTime"
 
         fun getIntent(
             context: Context,
             points: Int,
             level: Int,
+            totalTime: Int,
         ): Intent {
             val intent = Intent(context, LoadingActivity::class.java)
             intent.putExtra(POINTS_KEY, points)
             intent.putExtra(LEVEL_KEY, level)
+            intent.putExtra(TIME_KEY, totalTime)
             return intent
         }
     }
@@ -29,6 +32,7 @@ class LoadingActivity : AppCompatActivity() {
     private var level: Int = 0
     var countDownTimer: CountDownTimer? = null
     var timer = 5
+    var totalTime = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoadingBinding.inflate(layoutInflater)
@@ -36,6 +40,7 @@ class LoadingActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
         points = intent.getIntExtra(POINTS_KEY, 0)
         level = intent.getIntExtra(LEVEL_KEY, 0)
+        totalTime = intent.getIntExtra(TIME_KEY, 0)
         level++
         var isPaused = false
         findViewById<TextView>(R.id.txtPoints)
@@ -93,7 +98,7 @@ class LoadingActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                val intent = SinglePlayerActivity.getIntent(context, points, level)
+                val intent = SinglePlayerActivity.getIntent(context, points, level, totalTime)
                 startActivity(intent)
             }
         }.start()
