@@ -47,7 +47,7 @@ class MenuActivity : AppCompatActivity() {
         setContentView(binding.root)
         if(profilePicturePath!= "" && profilePicturePath != null){
             val bMap = BitmapFactory.decodeFile(profilePicturePath)
-            binding.btnProfile!!.setImageBitmap(bMap)
+            //binding.btnProfile!!.setImageBitmap(bMap)
         }
 
         appLanguage = intent.getStringExtra(LANGUAGE_KEY).toString()

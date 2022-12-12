@@ -67,18 +67,6 @@
         app:layout_constraintTop_toBottomOf="@+id/btnStart" />
 
 
-    <ImageView
-        android:id="@+id/btnProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        app:layout_constraintBottom_toBottomOf="@+id/txtTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtTitle"
-        app:layout_constraintTop_toTopOf="@+id/txtTitle"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
-
     <TextView
         android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
@@ -109,6 +97,18 @@
         app:layout_constraintGuide_percent="0.85"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnProfile"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@color/node_main"
+        android:contentDescription="@string/profile"
+        app:layout_constraintBottom_toBottomOf="@+id/txtTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtTitle"
+        app:layout_constraintTop_toTopOf="@+id/txtTitle"
+        app:srcCompat="@drawable/profile_vector" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
