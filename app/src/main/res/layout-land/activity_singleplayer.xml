@@ -15,13 +15,13 @@
         android:textColor="@color/text_color"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView13"
+        app:layout_constraintEnd_toStartOf="@+id/txtExpression"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/txtTimer"
         app:layout_constraintTop_toBottomOf="@+id/txtTimer" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/txtExpression"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/default_number"

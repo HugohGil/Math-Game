@@ -102,21 +102,23 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/btnProfile"
-        android:layout_width="48dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="23dp"
-        android:clickable="true"
-        android:focusable="true"
-        app:layout_constraintBottom_toTopOf="@+id/btnStart"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="122dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="28dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/profile_picture_shape"
+        android:contentDescription="@string/profile"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/btnTop5"
+        app:layout_constraintEnd_toStartOf="@+id/guideline9"
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintStart_toEndOf="@+id/txtTitle"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.883"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
-    />
+        app:srcCompat="@drawable/profile_vector" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
