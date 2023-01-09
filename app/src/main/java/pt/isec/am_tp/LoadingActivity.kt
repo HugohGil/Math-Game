@@ -16,6 +16,7 @@ class LoadingActivity : AppCompatActivity() {
         private const val POINTS_KEY = "points"
         private const val LEVEL_KEY = "level"
         private const val TIME_KEY = "totalTime"
+        private const val LOADING_TIME_KEY = "loadingTime"
 
         fun getIntent(
             context: Context,
@@ -45,6 +46,10 @@ class LoadingActivity : AppCompatActivity() {
         level = intent.getIntExtra(LEVEL_KEY, 0)
         totalTime = intent.getIntExtra(TIME_KEY, 0)
         level++
+
+        if(savedInstanceState != null){
+            timer = savedInstanceState.getInt(LOADING_TIME_KEY)
+        }
         var isPaused = false
         findViewById<TextView>(R.id.txtPoints)
             .text = "$points"
@@ -105,5 +110,11 @@ class LoadingActivity : AppCompatActivity() {
             }
         }.start()
 
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        countDownTimer?.cancel()
+        outState.putInt(LOADING_TIME_KEY, timer)
     }
 }

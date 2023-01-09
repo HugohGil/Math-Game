@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Point
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.PersistableBundle
 import android.util.Log
 import android.view.GestureDetector
 import android.view.MenuItem
@@ -26,7 +27,9 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         private const val POINTS_KEY = "points"
         private const val LEVEL_KEY = "level"
         private const val TIME_KEY = "totalTime"
-
+        private const val TIMER_KEY = "timer"
+        private const val GENERATE_KEY = "generate"
+        private const val EXPRESSIONS_KEY = "expressions"
         fun getIntent(
             context: Context,
             points: Int,
@@ -69,8 +72,23 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         totalTime = intent.getIntExtra(TIME_KEY, 0)
         singlePlayerViewModel.points = points
         singlePlayerViewModel.level = level
+
         generateLevel()
         generateBoard()
+        if(savedInstanceState != null){
+            timer = savedInstanceState.getInt(TIMER_KEY)
+            singlePlayerViewModel.points = savedInstanceState.getInt(POINTS_KEY)
+            totalTime = savedInstanceState.getInt(TIME_KEY)
+            singlePlayerViewModel.expressions = savedInstanceState.getInt(EXPRESSIONS_KEY)
+        }
+
+        findViewById<TextView>(R.id.txtDifficulty)
+            .text = "${singlePlayerViewModel.level}"
+        findViewById<TextView>(R.id.txtExpression)
+            .text = "${singlePlayerViewModel.expressions}"
+        findViewById<TextView>(R.id.txtPoints)
+            .text = "${singlePlayerViewModel.points}"
+
         startTimer()
     }
 
@@ -97,12 +115,6 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
                 singlePlayerViewModel.bonus = 10
             }
         }
-        findViewById<TextView>(R.id.txtDifficulty)
-            .text = "${singlePlayerViewModel.level}"
-        findViewById<TextView>(R.id.txtExpression)
-            .text = "${singlePlayerViewModel.expressions}"
-        findViewById<TextView>(R.id.txtPoints)
-            .text = "${singlePlayerViewModel.points}"
     }
 
     private fun startTimer() {
@@ -477,4 +489,12 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         return true
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(TIMER_KEY, timer)
+        outState.putInt(POINTS_KEY, singlePlayerViewModel.points)
+        outState.putInt(TIME_KEY, totalTime)
+        outState.putBoolean(GENERATE_KEY, false)
+        outState.putInt(EXPRESSIONS_KEY, singlePlayerViewModel.expressions)
+    }
 }
