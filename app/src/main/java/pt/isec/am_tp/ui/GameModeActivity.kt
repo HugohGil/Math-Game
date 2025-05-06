@@ -1,4 +1,4 @@
-package pt.isec.am_tp
+package pt.isec.am_tp.ui
 
 import android.content.Intent
 import android.os.Bundle

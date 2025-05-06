@@ -1,15 +1,9 @@
-package pt.isec.am_tp
+package pt.isec.am_tp.ui
 
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
-import androidx.annotation.Nullable
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import pt.isec.am_tp.databinding.ActivityMenuBinding
 import java.util.*
 
 

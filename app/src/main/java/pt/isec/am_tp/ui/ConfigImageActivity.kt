@@ -1,4 +1,4 @@
-package pt.isec.am_tp
+package pt.isec.am_tp.ui
 
 import android.content.Context
 import android.content.Intent
@@ -12,7 +12,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import pt.isec.am_tp.R
+import pt.isec.am_tp.utils.createFileFromUri
 import pt.isec.am_tp.databinding.ActivityProfileBinding
+import pt.isec.am_tp.utils.setImage
 
 
 class ConfigImageActivity : AppCompatActivity(){
@@ -64,7 +67,7 @@ class ConfigImageActivity : AppCompatActivity(){
         private const val GALLERY = 1
         private const val MODE_KEY = "mode"
         fun getGalleryIntent(context : Context) : Intent {
-            val intent = Intent(context,ConfigImageActivity::class.java)
+            val intent = Intent(context, ConfigImageActivity::class.java)
             intent.putExtra(MODE_KEY, GALLERY)
             return intent
         }

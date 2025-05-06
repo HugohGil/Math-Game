@@ -1,20 +1,17 @@
-package pt.isec.am_tp
+package pt.isec.am_tp.ui
 
 
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.BitmapFactory
-import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.res.ResourcesCompat
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+import pt.isec.am_tp.R
 import pt.isec.am_tp.databinding.ActivityMenuBinding
 import java.util.*
 
@@ -109,7 +106,7 @@ class MenuActivity : AppCompatActivity() {
             conf.locale = locale
             res.updateConfiguration(conf, dm)
             val intent = Intent(
-                Companion.getIntent(this, l)
+                getIntent(this, l)
             )
             startActivity(intent)
         } else

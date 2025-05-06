@@ -1,4 +1,4 @@
-package pt.isec.am_tp
+package pt.isec.am_tp.utils
 
 import android.content.Context
 import android.graphics.Bitmap

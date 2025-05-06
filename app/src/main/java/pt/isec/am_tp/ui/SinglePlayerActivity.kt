@@ -1,11 +1,10 @@
-package pt.isec.am_tp
+package pt.isec.am_tp.ui
 
 import android.content.Context
 import android.content.Intent
 import android.graphics.Point
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.os.PersistableBundle
 import android.util.Log
 import android.view.GestureDetector
 import android.view.MenuItem
@@ -16,6 +15,7 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import pt.isec.am_tp.R
 import pt.isec.am_tp.databinding.ActivitySingleplayerBinding
 import java.lang.Math.abs
 import kotlin.random.Random
@@ -136,11 +136,13 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
         /*
         Generates game board
          */
-        val ids = arrayOf(R.id.btnNum0, R.id.btnAr0, R.id.btnNum1, R.id.btnAr1, R.id.btnNum2,
+        val ids = arrayOf(
+            R.id.btnNum0, R.id.btnAr0, R.id.btnNum1, R.id.btnAr1, R.id.btnNum2,
             R.id.btnAr2, R.id.btnSpace11, R.id.btnAr3, R.id.btnSpace13, R.id.btnAr4,
             R.id.btnNum3, R.id.btnAr5, R.id.btnNum4, R.id.btnAr6, R.id.btnNum5,
             R.id.btnAr7, R.id.btnSpace31, R.id.btnAr8, R.id.btnSpace33, R.id.btnAr9,
-            R.id.btnNum6, R.id.btnAr10, R.id.btnNum7, R.id.btnAr11, R.id.btnNum8)
+            R.id.btnNum6, R.id.btnAr10, R.id.btnNum7, R.id.btnAr11, R.id.btnNum8
+        )
 
         buttonsArray = Array(5) { Array(5) { null } } //initialize buttonsArray with null elements
         for(row in 0..4){
@@ -463,28 +465,28 @@ class SinglePlayerActivity : AppCompatActivity(), GestureDetector.OnGestureListe
             .show()
     }
 
-    override fun onDown(p0: MotionEvent?): Boolean {
+    override fun onDown(p0: MotionEvent): Boolean {
        // Log.i("GESTURE", "onDown: ${p0?.x} / ${p0?.y}")
         return true
     }
-    override fun onScroll(p0: MotionEvent?, p1: MotionEvent?, p2: Float, p3: Float): Boolean {
+    override fun onScroll(p0: MotionEvent?, p1: MotionEvent, p2: Float, p3: Float): Boolean {
        // Log.i("GESTURE", "onScroll: ${p1?.x} / ${p1?.y}")
         return true
     }
 
-    override fun onShowPress(p0: MotionEvent?) {
+    override fun onShowPress(p0: MotionEvent) {
         //Log.i("GESTURE", "onShowPress: ")
     }
 
-    override fun onSingleTapUp(p0: MotionEvent?): Boolean {
+    override fun onSingleTapUp(p0: MotionEvent): Boolean {
         //Log.i("GESTURE", "onSingleTapUp: ")
         return true
     }
 
-    override fun onLongPress(p0: MotionEvent?) {
+    override fun onLongPress(p0: MotionEvent) {
         //Log.i("GESTURE", "onLongPress: ")
     }
-    override fun onFling(p0: MotionEvent?, p1: MotionEvent?, p2: Float, p3: Float): Boolean {
+    override fun onFling(p0: MotionEvent?, p1: MotionEvent, p2: Float, p3: Float): Boolean {
         //Log.i("GESTURE", "onFling: ")
         return true
     }

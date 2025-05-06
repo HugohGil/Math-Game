@@ -1,10 +1,8 @@
-package pt.isec.am_tp
+package pt.isec.am_tp.ui
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import pt.isec.am_tp.databinding.ActivityCreditsBinding
-import pt.isec.am_tp.databinding.ActivityGamemodeBinding
 
 class CreditsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreditsBinding
